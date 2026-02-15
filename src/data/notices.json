@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Admissions Open 2026–27",
+    "date": "2026-03-30",
+    "desc": "Application forms are now available at the school office.",
+    "pdf": "/pdfs/admission-form.pdf",
+    "category": "Admission"
+  },
+  {
+    "id": 2,
+    "title": "Annual Science Expo",
+    "date": "2026-03-21",
+    "desc": "Parents are invited to visit student exhibits from 10 AM to 2 PM.",
+    "category": "Event"
+  },
+  {
+    "id": 3,
+    "title": "Inter-School Basketball Trials",
+    "date": "2026-03-15",
+    "desc": "Eligible students from Grades 8 to 12 can register with the sports department.",
+    "pdf": "/pdfs/sports-trials.pdf",
+    "category": "Sports"
+  },
+  {
+    "id": 4,
+    "title": "Scholarship Assessment Circular",
+    "date": "2026-03-10",
+    "desc": "Merit scholarship assessment details and schedule are available at the front office.",
+    "category": "Academic"
+  }
+]
