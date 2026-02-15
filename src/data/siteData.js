@@ -21,7 +21,7 @@ export const notices = [
     date: '2026-03-30',
     title: 'Admissions Open for Academic Session 2026–27',
     description: 'Application forms are now available. Last date for first round submissions is March 30.',
-    pdf: '#',
+    pdf: '/notices/admissions-circular.pdf',
   },
   {
     date: '2026-03-21',
@@ -32,7 +32,7 @@ export const notices = [
     date: '2026-03-15',
     title: 'Inter-School Basketball Trials',
     description: 'Eligible students from Grades 8 to 12 can register with the sports department.',
-    pdf: '#',
+    pdf: '/notices/sports-trials.pdf',
   },
   {
     date: '2026-03-10',

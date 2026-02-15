@@ -6,6 +6,7 @@ import AdmissionsPage from './pages/AdmissionsPage'
 import NoticesPage from './pages/NoticesPage'
 import ContactPage from './pages/ContactPage'
 import GalleryPage from './pages/GalleryPage'
+import NotFoundPage from './pages/NotFoundPage'
 import AcademicsPage from './pages/AcademicsPage'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/notices" element={<NoticesPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   )

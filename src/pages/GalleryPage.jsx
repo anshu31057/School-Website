@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import SectionHeader from '../components/SectionHeader'
 import useScrollReveal from '../hooks/useScrollReveal'
+import GalleryModal from '../components/modals/GalleryModal'
 import { galleryEvents } from '../data/siteData'
 
 function GalleryPage() {
@@ -11,18 +12,6 @@ function GalleryPage() {
     () => galleryEvents.flatMap((event) => event.photos.map((photo) => ({ ...photo, event: event.event }))),
     [],
   )
-
-  useEffect(() => {
-    const onKeyDown = (event) => {
-      if (activeIndex === null) return
-      if (event.key === 'Escape') setActiveIndex(null)
-      if (event.key === 'ArrowRight') setActiveIndex((prev) => (prev + 1) % allPhotos.length)
-      if (event.key === 'ArrowLeft') setActiveIndex((prev) => (prev - 1 + allPhotos.length) % allPhotos.length)
-    }
-
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [activeIndex, allPhotos.length])
 
   return (
     <section ref={revealRef} className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
@@ -67,33 +56,7 @@ function GalleryPage() {
         ))}
       </div>
 
-      {activeIndex !== null ? (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Image lightbox"
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/85 p-4"
-          onClick={() => setActiveIndex(null)}
-        >
-          <div className="relative w-full max-w-5xl" onClick={(event) => event.stopPropagation()}>
-            <button
-              type="button"
-              onClick={() => setActiveIndex(null)}
-              aria-label="Close lightbox"
-              className="btn-interactive absolute -top-12 right-0 rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white"
-            >
-              Close ✕
-            </button>
-            <img
-              src={allPhotos[activeIndex].image}
-              alt={`${allPhotos[activeIndex].title} at ${allPhotos[activeIndex].event}`}
-              className="max-h-[80vh] w-full rounded-2xl object-contain"
-            />
-            <p className="mt-3 text-center font-heading text-lg font-bold text-white">{allPhotos[activeIndex].title}</p>
-            <p className="text-center text-sm text-slate-200">{allPhotos[activeIndex].event}</p>
-          </div>
-        </div>
-      ) : null}
+      <GalleryModal open={activeIndex !== null} onClose={() => setActiveIndex(null)} item={activeIndex !== null ? allPhotos[activeIndex] : null} />
     </section>
   )
 }

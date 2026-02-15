@@ -22,9 +22,14 @@ export default {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
         },
+        cinematicZoom: {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.08)' },
+        },
       },
       animation: {
         marquee: 'marquee 22s linear infinite',
+        'cinematic-zoom': 'cinematicZoom 18s ease-in-out infinite alternate',
       },
     },
   },
