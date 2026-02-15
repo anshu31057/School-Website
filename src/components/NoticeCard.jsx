@@ -1,8 +1,7 @@
+import { formatNoticeDateParts } from '../utils/noticeDate'
+
 function NoticeCard({ notice }) {
-  const date = new Date(notice.date)
-  const day = date.toLocaleString('en-US', { day: '2-digit' })
-  const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase()
-  const year = date.getFullYear()
+  const { day, month, year } = formatNoticeDateParts(notice.date)
 
   return (
     <article className="rounded-2xl border-l-4 border-secondary bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-soft md:p-6">
@@ -14,11 +13,16 @@ function NoticeCard({ notice }) {
         </div>
 
         <div>
-          <h2 className="font-heading text-xl font-bold text-primary">{notice.title}</h2>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">{notice.description}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">{notice.category}</p>
+          <h2 className="mt-1 font-heading text-xl font-bold text-primary">{notice.title}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">{notice.desc}</p>
+
           {notice.pdf ? (
             <a
               href={notice.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              download
               className="btn-interactive mt-4 inline-flex w-full items-center justify-center rounded-full border border-secondary px-4 py-2 text-xs font-bold text-secondary hover:bg-secondary hover:text-white sm:w-auto"
               aria-label={`Download circular PDF for ${notice.title}`}
             >

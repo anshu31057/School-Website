@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
-import { notices } from '../data/siteData'
+import noticesJson from '../data/notices.json'
+import { sortNoticesNewestFirst } from '../utils/noticeDate'
 
 function NoticeTicker() {
-  const noticeText = notices.map((item) => `${item.title} | ${new Date(item.date).toLocaleDateString()}`)
+  const sorted = sortNoticesNewestFirst(noticesJson)
+  const noticeText = sorted.map((item) => `${item.title} | ${new Date(item.date).toLocaleDateString()}`)
   const scrollerItems = [...noticeText, ...noticeText]
 
   return (

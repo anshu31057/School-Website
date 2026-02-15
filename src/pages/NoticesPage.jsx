@@ -2,26 +2,29 @@ import { useMemo, useState } from 'react'
 import SectionHeader from '../components/SectionHeader'
 import NoticeCard from '../components/NoticeCard'
 import useScrollReveal from '../hooks/useScrollReveal'
-import { notices } from '../data/siteData'
+import noticesJson from '../data/notices.json'
+import { sortNoticesNewestFirst } from '../utils/noticeDate'
 
 function NoticesPage() {
   const [query, setQuery] = useState('')
   const [selectedMonth, setSelectedMonth] = useState('all')
   const revealRef = useScrollReveal({ selector: '[data-reveal]', stagger: 0.08, y: 22 })
 
+  const sortedNotices = useMemo(() => sortNoticesNewestFirst(noticesJson), [])
+
   const months = useMemo(
-    () => [...new Set(notices.map((item) => new Date(item.date).toLocaleString('en-US', { month: 'long' })))],
-    [],
+    () => [...new Set(sortedNotices.map((item) => new Date(item.date).toLocaleString('en-US', { month: 'long' })))],
+    [sortedNotices],
   )
 
   const filteredNotices = useMemo(() => {
-    return notices.filter((notice) => {
+    return sortedNotices.filter((notice) => {
       const month = new Date(notice.date).toLocaleString('en-US', { month: 'long' })
       const matchesMonth = selectedMonth === 'all' || month === selectedMonth
-      const searchText = `${notice.title} ${notice.description}`.toLowerCase()
+      const searchText = `${notice.title} ${notice.desc} ${notice.category}`.toLowerCase()
       return matchesMonth && searchText.includes(query.toLowerCase())
     })
-  }, [query, selectedMonth])
+  }, [query, selectedMonth, sortedNotices])
 
   return (
     <section ref={revealRef} className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
@@ -57,7 +60,7 @@ function NoticesPage() {
 
       <div className="mt-8 space-y-4" data-reveal>
         {filteredNotices.map((notice) => (
-          <NoticeCard key={notice.title} notice={notice} />
+          <NoticeCard key={notice.id} notice={notice} />
         ))}
       </div>
     </section>

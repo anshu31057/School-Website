@@ -16,31 +16,6 @@ export const highlights = [
   { title: 'Experienced Teachers', icon: '👩‍🏫', description: 'A passionate faculty focused on academic excellence and mentorship.' },
 ]
 
-export const notices = [
-  {
-    date: '2026-03-30',
-    title: 'Admissions Open for Academic Session 2026–27',
-    description: 'Application forms are now available. Last date for first round submissions is March 30.',
-    pdf: '/notices/admissions-circular.pdf',
-  },
-  {
-    date: '2026-03-21',
-    title: 'Annual Science Expo',
-    description: 'Parents are invited to visit student innovation exhibits from 10:00 AM to 2:00 PM.',
-  },
-  {
-    date: '2026-03-15',
-    title: 'Inter-School Basketball Trials',
-    description: 'Eligible students from Grades 8 to 12 can register with the sports department.',
-    pdf: '/notices/sports-trials.pdf',
-  },
-  {
-    date: '2026-03-10',
-    title: 'Scholarship Assessment Circular',
-    description: 'Merit scholarship assessment details and schedule available at the front office.',
-  },
-]
-
 export const galleryItems = [
   { title: 'STEM Workshop', image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=900&q=70' },
   { title: 'Library Hour', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=70' },
